@@ -1,27 +1,31 @@
-# [Start Bootstrap](http://startbootstrap.com/) - [Creative](http://startbootstrap.com/template-overviews/creative/)
+# Setting up Redsi
+<img src="img/logo.png" width="200px" />
 
-[Creative](http://startbootstrap.com/template-overviews/creative/) is a one page creative theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
+This is an instructional guide on how to set up Redsi on your Minecraft server to convert your Redstone circuits to Verilog.
 
-## Getting Started
+## Java Plugin
+### Server Requirements
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](http://startbootstrap.com/template-overviews/creative/)
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-creative.git`
-* Fork the repo
+* <a href='https://dev.bukkit.org/bukkit-plugins/worldedit/' target="_blank">_WorldEdit_ Plugin</a>
+* `redsi-{current version}-jar-with-dependencies.jar`
 
-## Bugs and Issues
+Install both plugins on your server and they should both work out of the box. Redsi requires _WorldEdit_ and will produce an error if that plugin cannot be found.
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-creative/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/creative/).
+### Selecting a circuit
+Use the _WorldEdit_ plugin to create a selection. This selection should be large enough to encompass your entire circuit.
 
-## Creator
+### Execute Redsi
+Enter `/redsi` into chat to activate the plugin. It will take all of the blocks you selected and parse a circuit. Then it will send your circuit to the cloud for conversion into Verilog.
 
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
+#### Additional parameters
+The `/redsi` command runs without any additional arguments. However, you can alternately mark some flags to alter the output. You can have one or more flags at a time in any order.
 
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
+* `--no-build`: This will run through the compilation process locally, but will not upload your circuit to the cloud. This can be useful for local debugging.
+* `-v`: This enables verbose log messages in your server's log files.
+* `--private`: If the private flag is set, the Verilog will be only sent to the player who started the command. Otherwise, the Url will be broadcast to everyone currently on the server.
+* `--print-logs`: This will post log messages in the chatroom.
+* `--print-misc`: If blocks within your selection have special data values, these will be printed to the chatroom. This can be useful for local debugging.
+* `--print-redsi`: Prints out log statements that relate to Redsi's converter
+* `--print-signs`: If any blocks within your selection are signs, their text will be printed to the chatroom.
 
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
-
-## Copyright and License
-
-Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-creative/blob/gh-pages/LICENSE) license.
+## Verilog Base Project
